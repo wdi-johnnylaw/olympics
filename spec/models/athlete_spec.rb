@@ -12,6 +12,29 @@ describe Athlete do
 		}
 	end
 
+	describe 'scopes' do
+		describe '.snow_sports' do
+			it 'returns only the athletes who participate in snow sports' do
+				# snow sports = ['Skiing', 'Biathlon', 'Ski jumping']
+				Athlete.create(@valid_attributes.merge(sport: 'Skiing'))
+				Athlete.create(@valid_attributes.merge(sport: 'Biathlon'))
+				Athlete.create(@valid_attributes.merge(sport: 'Ski jumping'))
+				unwanted = Athlete.create(@valid_attributes.merge(sport: 'Hockey'))
+
+				expect(Athlete.snow_sports).not_to include unwanted
+				expect(Athlete.snow_sports.count).to eq 3
+			end
+		end
+
+		describe '.of_legal_drinking_age' do   # in the US
+		end
+
+		describe '.age_range' do
+			it 'returns only athletes who are in between the two ages given' do
+			end
+		end
+	end
+
 	describe '#name' do
 		context 'when first and last name are present' do
 			it 'returns the first and last names concatenated with space in between' do
