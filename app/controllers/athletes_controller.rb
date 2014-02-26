@@ -4,13 +4,13 @@ class AthletesController < ApplicationController
   end
 
   def create
-  	@athlete = Athlete.new(params.require(:athlete).permit(:first_name, :last_name))
-  	if @athlete.save
-  		flash[:notice] = 'Yey!'
-	  	redirect_to @athlete
-  	else
-  		flash[:error] = 'Boo'
-  		render action: 'new'
-  	end
+    @athlete = Athlete.new(params.require(:athlete).permit(:first_name))
+    if @athlete.save
+      flash[:notice] = 'Yey! Your athlete saved successfully!'
+      redirect_to athletes_path
+    else
+      flash[:error] = 'Boo, no go!'
+      render action: 'new'
+    end
   end
 end

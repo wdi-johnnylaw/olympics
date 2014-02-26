@@ -1,5 +1,5 @@
 WinterOlympics::Application.routes.draw do
-  resources :athletes, only: [:index, :create, :show]
+  resources :athletes, only: [:index, :create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
